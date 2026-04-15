@@ -10,7 +10,7 @@ import calendar
 app = Flask(__name__)
 app.secret_key = "secret"
 
-DB = "habit.db"
+DB = "/tmp/habit.db"
 
 # ---------------- DATABASE ----------------
 
@@ -101,7 +101,8 @@ def get_achievement(streak):
 # ---------------- DASHBOARD ----------------
 
 @app.route("/")
-def dashboard():
+def home():
+    return redirect("/login")
     if "user" not in session:
         return redirect("/login")
 
